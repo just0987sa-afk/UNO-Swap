@@ -2582,59 +2582,7 @@
             }
 
             // UNO challenge function
-            function addUnoChallenge(playerName, targetPlayerName) {
-                console.log(`UNO Challenge: ${playerName} calls UNO on ${targetPlayerName}`);
-
-                addChatMessage(playerName, `calls UNO on ${targetPlayerName}!`);
-
-                const targetPlayer = gameState.players.find(p => p.name.replace(' (You)', '') === targetPlayerName.replace(' (You)', ''));
-
-                if (targetPlayer) {
-                    console.log(`Target player found: ${targetPlayer.name}, Cards: ${targetPlayer.cards.length}, UNO Called: ${gameState.unoCalled}`);
-
-                    // Check if target has exactly 1 card AND didn't call UNO
-                    if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
-                        // Penalty for forgetting UNO - draw 2 cards
-                        for (let i = 0; i < 2; i++) {
-                            if (gameState.deck.length === 0) {
-                                // Reshuffle discard pile if deck is empty
-                                const topCard = gameState.discardPile.pop();
-                                gameState.deck = [...gameState.discardPile];
-                                gameState.discardPile = [topCard];
-                                shuffleDeck();
-                                addChatMessage("System", "The deck has been reshuffled!");
-                            }
-                            targetPlayer.cards.push(gameState.deck.pop());
-                        }
-
-                        addChatMessage("System", `${targetPlayerName} forgot to call UNO! Draw 2 penalty cards.`);
-                        console.log(`UNO violation! ${targetPlayerName} draws 2 penalty cards`);
-
-                        // Update display if it's the human player
-                        if (targetPlayer.isHuman) {
-                            updatePlayerHand();
-                            enablePlayerControls();
-                        }
-
-                        // Mark UNO as called to prevent multiple penalties
-                        gameState.unoCalled = true;
-
-                    } else if (targetPlayer.cards.length !== 1) {
-                        // False call - target doesn't have exactly 1 card
-                        addChatMessage("System", `False UNO call! ${targetPlayerName} has ${targetPlayer.cards.length} cards. No penalty.`);
-                        console.log(`False UNO call - ${targetPlayerName} has ${targetPlayer.cards.length} cards`);
-
-                    } else if (gameState.unoCalled) {
-                        // False call - UNO was already called
-                        addChatMessage("System", `False UNO call! ${targetPlayerName} already called UNO. No penalty.`);
-                        console.log(`False UNO call - ${targetPlayerName} already called UNO`);
-                    }
-                } else {
-                    addChatMessage("System", `Player ${targetPlayerName} not found!`);
-                    console.error(`Player ${targetPlayerName} not found for UNO challenge`);
-                }
-            }
-
+            
             // Update stats display
             function updateStats() {
                 document.getElementById('stat-turns').textContent = gameState.stats.turns;
@@ -2659,7 +2607,84 @@
                     // Apply settings
                     chatArea.style.display = gameState.settings.chatEnabled ? 'block' : 'none';
                 }
+            }// UNO challenge function - update to check if player has exactly 1 card
+function addUnoChallenge(playerName, targetPlayerName) {
+    console.log(`UNO Challenge: ${playerName} calls UNO on ${targetPlayerName}`);
+
+    addChatMessage(playerName, `calls UNO on ${targetPlayerName}!`);
+
+    const targetPlayer = gameState.players.find(p => p.name.replace(' (You)', '') === targetPlayerName.replace(' (You)', ''));
+
+    if (targetPlayer) {
+        console.log(`Target player found: ${targetPlayer.name}, Cards: ${targetPlayer.cards.length}, UNO Called: ${gameState.unoCalled}`);
+
+        // Check if target has exactly 1 card AND didn't call UNO
+        if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
+            // Penalty for forgetting UNO - draw 2 cards
+            for (let i = 0; i < 2; i++) {
+                if (gameState.deck.length === 0) {
+                    // Reshuffle discard pile if deck is empty
+                    const topCard = gameState.discardPile.pop();
+                    gameState.deck = [...gameState.discardPile];
+                    gameState.discardPile = [topCard];
+                    shuffleDeck();
+                    addChatMessage("System", "The deck has been reshuffled!");
+                }
+                targetPlayer.cards.push(gameState.deck.pop());
             }
+
+            addChatMessage("System", `${targetPlayerName} forgot to call UNO! Draw 2 penalty cards.`);
+            console.log(`UNO violation! ${targetPlayerName} draws 2 penalty cards`);
+            gameState.unoCalled = true; // Mark as called to prevent multiple penalties
+
+            // Update display if it's the human player
+            if (targetPlayer.isHuman) {
+                updatePlayerHand();
+                enablePlayerControls();
+            }
+
+        } else if (targetPlayer.cards.length !== 1) {
+            // False call - target doesn't have exactly 1 card
+            addChatMessage("System", `False UNO call! ${targetPlayerName} has ${targetPlayer.cards.length} cards. ${playerName} draws 2 cards!`);
+            console.log(`False UNO call - ${targetPlayerName} has ${targetPlayer.cards.length} cards`);
+            
+            // Penalty for false UNO call - challenger draws 2 cards
+            const challenger = gameState.players.find(p => p.name.replace(' (You)', '') === playerName.replace(' (You)', ''));
+            if (challenger) {
+                for (let i = 0; i < 2; i++) {
+                    if (gameState.deck.length === 0) {
+                        const topCard = gameState.discardPile.pop();
+                        gameState.deck = [...gameState.discardPile];
+                        gameState.discardPile = [topCard];
+                        shuffleDeck();
+                    }
+                    challenger.cards.push(gameState.deck.pop());
+                }
+            }
+        } else if (gameState.unoCalled) {
+            // False call - UNO was already called
+            addChatMessage("System", `False UNO call! ${targetPlayerName} already called UNO. ${playerName} draws 2 cards!`);
+            console.log(`False UNO call - ${targetPlayerName} already called UNO`);
+            
+            // Penalty for false UNO call - challenger draws 2 cards
+            const challenger = gameState.players.find(p => p.name.replace(' (You)', '') === playerName.replace(' (You)', ''));
+            if (challenger) {
+                for (let i = 0; i < 2; i++) {
+                    if (gameState.deck.length === 0) {
+                        const topCard = gameState.discardPile.pop();
+                        gameState.deck = [...gameState.discardPile];
+                        gameState.discardPile = [topCard];
+                        shuffleDeck();
+                    }
+                    challenger.cards.push(gameState.deck.pop());
+                }
+            }
+        }
+    } else {
+        addChatMessage("System", `Player ${targetPlayerName} not found!`);
+        console.error(`Player ${targetPlayerName} not found for UNO challenge`);
+    }
+                }
 
             // Save settings to localStorage
             function saveSettings() {
@@ -2671,5 +2696,6 @@
         });
     </script>
 </body>
-</html>
+</html
+
 
