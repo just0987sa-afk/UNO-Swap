@@ -1989,7 +1989,7 @@
                 }
 
                 // Check for UNO (player has exactly 1 card left)
-                if (player.cards.length === 1) {
+                if (player.cards.length === 2) {
                     if (!isAI) {
                         // Human player - prompt to call UNO
                         gameState.gameMessage = "You have one card left! Press UNO!";
@@ -2672,3 +2672,4 @@
     </script>
 </body>
 </html>
+
