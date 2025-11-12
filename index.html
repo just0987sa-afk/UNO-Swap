@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1204,10 +1205,12 @@
                 opacity: 0.3;
                 transform: scale(1);
             }
+
             50% {
                 opacity: 0.7;
                 transform: scale(1.1);
             }
+
             100% {
                 opacity: 0.3;
                 transform: scale(1);
@@ -1240,9 +1243,11 @@
             0% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.2);
             }
+
             100% {
                 transform: scale(1);
             }
@@ -1290,16 +1295,20 @@
             0% {
                 transform: translateX(0) scale(1);
             }
+
             25% {
                 transform: translateX(50px) scale(1.1);
             }
+
             50% {
                 transform: translateX(0) scale(1.2);
                 filter: brightness(1.5);
             }
+
             75% {
                 transform: translateX(-50px) scale(1.1);
             }
+
             100% {
                 transform: translateX(0) scale(1);
             }
@@ -1319,10 +1328,12 @@
                 transform: scale(0.5);
                 opacity: 0;
             }
+
             50% {
                 transform: scale(1.2);
                 opacity: 0.7;
             }
+
             100% {
                 transform: scale(1.5);
                 opacity: 0;
@@ -1342,9 +1353,11 @@
             0% {
                 opacity: 0;
             }
+
             50% {
                 opacity: 0.8;
             }
+
             100% {
                 opacity: 0;
             }
@@ -1408,7 +1421,8 @@
                 gap: 15px;
             }
 
-            .deck, .discard-pile {
+            .deck,
+            .discard-pile {
                 width: 80px;
                 height: 120px;
             }
@@ -1497,7 +1511,8 @@
                 font-size: 1.5rem;
             }
 
-            .deck, .discard-pile {
+            .deck,
+            .discard-pile {
                 width: 60px;
                 height: 90px;
             }
@@ -1541,8 +1556,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>UNO BODY SWAP</h1>
-            <p class="subtitle">Classic Uno gameplay with body swapping twist</p>
+            <h1>UNO</h1>
+            <p class="subtitle">Classic Uno gameplay with a twist</p>
         </header>
 
         <!-- Setup Screen -->
@@ -1856,61 +1871,61 @@
             // Game state object
             const gameState = {
                 players: [
-                    { 
-                        id: 0, 
-                        name: 'Anirudh', 
-                        cards: [], 
-                        isActive: true, 
-                        avatar: 'P1', 
-                        color: '#e74c3c', 
-                        gender: 'male', 
-                        personality: 'strategist', 
-                        originalName: 'Anirudh', 
+                    {
+                        id: 0,
+                        name: 'Anirudh',
+                        cards: [],
+                        isActive: true,
+                        avatar: 'P1',
+                        color: '#e74c3c',
+                        gender: 'male',
+                        personality: 'strategist',
+                        originalName: 'Anirudh',
                         originalId: 0,
                         originalGender: 'male',
                         isHuman: false,
                         currentBodyId: 0
                     },
-                    { 
-                        id: 1, 
-                        name: 'Soniya', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P2', 
-                        color: '#3498db', 
-                        gender: 'female', 
-                        personality: 'trickster', 
-                        originalName: 'Soniya', 
+                    {
+                        id: 1,
+                        name: 'Soniya',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P2',
+                        color: '#3498db',
+                        gender: 'female',
+                        personality: 'trickster',
+                        originalName: 'Soniya',
                         originalId: 1,
                         originalGender: 'female',
                         isHuman: false,
                         currentBodyId: 1
                     },
-                    { 
-                        id: 2, 
-                        name: 'John', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P3', 
-                        color: '#2ecc71', 
-                        gender: 'male', 
-                        personality: 'wildcard', 
-                        originalName: 'John', 
+                    {
+                        id: 2,
+                        name: 'John',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P3',
+                        color: '#2ecc71',
+                        gender: 'male',
+                        personality: 'wildcard',
+                        originalName: 'John',
                         originalId: 2,
                         originalGender: 'male',
                         isHuman: false,
                         currentBodyId: 2
                     },
-                    { 
-                        id: 3, 
-                        name: 'Aparna', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P4', 
-                        color: '#f1c40f', 
-                        gender: 'female', 
-                        personality: 'collector', 
-                        originalName: 'Aparna', 
+                    {
+                        id: 3,
+                        name: 'Aparna',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P4',
+                        color: '#f1c40f',
+                        gender: 'female',
+                        personality: 'collector',
+                        originalName: 'Aparna',
                         originalId: 3,
                         originalGender: 'female',
                         isHuman: false,
@@ -2068,7 +2083,7 @@
                     player.originalName = player.name;
                     player.originalGender = player.gender;
                     player.currentBodyId = index;
-                    
+
                     if (player.isHuman) {
                         player.name = player.originalName + ' (You)';
                     } else {
@@ -2327,19 +2342,26 @@
                 // UNO button
                 unoBtn.addEventListener('click', function () {
                     const player = gameState.players[gameState.currentPlayer];
-                    
+
                     // Allow UNO call only when player has exactly 1 card left
                     if (player.cards.length === 1 && !gameState.unoCalled) {
                         gameState.unoCalled = true;
                         addChatMessage(player.name, "UNO!");
                         unoBtn.disabled = true;
-                        
+
                         // Clear the penalty timeout
                         if (gameState.unoCheckTimeout) {
                             clearTimeout(gameState.unoCheckTimeout);
                             gameState.unoCheckTimeout = null;
                         }
-                        
+
+                        // FIX: Clear any active UNO challenge state
+                        if (gameState.unoChallengeState.active) {
+                            gameState.unoChallengeState.active = false;
+                            hideUnoChallengeOptions();
+                            addChatMessage("System", `${player.name} called UNO! Challenge cancelled.`);
+                        }
+
                         updatePlayerHand();
                         showNotification(`${player.name} called UNO!`, "success");
                     } else if (player.cards.length > 1) {
@@ -2350,32 +2372,32 @@
                 });
 
                 // Counter buttons
-                counterDraw2Btn.addEventListener('click', function() {
+                counterDraw2Btn.addEventListener('click', function () {
                     if (gameState.counterState.active && gameState.players[gameState.currentPlayer].isHuman) {
                         counterDrawCard('draw2');
                     }
                 });
 
-                counterWild4Btn.addEventListener('click', function() {
+                counterWild4Btn.addEventListener('click', function () {
                     if (gameState.counterState.active && gameState.players[gameState.currentPlayer].isHuman) {
                         counterDrawCard('wild4');
                     }
                 });
 
-                declineCounterBtn.addEventListener('click', function() {
+                declineCounterBtn.addEventListener('click', function () {
                     if (gameState.counterState.active && gameState.players[gameState.currentPlayer].isHuman) {
                         declineCounter();
                     }
                 });
 
                 // UNO Challenge buttons
-                unoChallengeBtn.addEventListener('click', function() {
+                unoChallengeBtn.addEventListener('click', function () {
                     if (gameState.unoChallengeState.active && gameState.players[gameState.currentPlayer].isHuman) {
                         challengeUno();
                     }
                 });
 
-                declineChallengeBtn.addEventListener('click', function() {
+                declineChallengeBtn.addEventListener('click', function () {
                     if (gameState.unoChallengeState.active && gameState.players[gameState.currentPlayer].isHuman) {
                         declineUnoChallenge();
                     }
@@ -2562,6 +2584,7 @@
             }
 
             // Play a card
+            // Play a card
             function playCard(cardIndex, isAI = false) {
                 const player = gameState.players[gameState.currentPlayer];
                 const card = player.cards[cardIndex];
@@ -2576,7 +2599,7 @@
                 // Remove card from player's hand immediately
                 player.cards.splice(cardIndex, 1);
 
-                // Reset UNO call status for the current player
+                // FIX: Reset UNO call status only when playing a card (not when drawing)
                 gameState.unoCalled = false;
 
                 // Add card to discard pile
@@ -2608,26 +2631,26 @@
                 if (player.cards.length === 1) {
                     // Player just played their second-to-last card and now has 1 card
                     gameState.unoCalled = false; // Reset UNO status - they need to call it
-                    
+
                     if (!isAI) {
                         // Human player - must call UNO before next turn
                         gameState.gameMessage = "You have one card left! You must call UNO before the next player's turn!";
                         unoBtn.disabled = false;
-                        
+
                         // Set a timeout to check if UNO was called
                         gameState.unoCheckTimeout = setTimeout(() => {
                             if (!gameState.unoCalled && gameState.players[gameState.currentPlayer].cards.length === 1) {
                                 // Player forgot to call UNO - setup challenge
                                 addChatMessage("System", `${player.name} forgot to call UNO! Other players can challenge!`);
                                 showNotification(`${player.name} forgot to call UNO! Other players can challenge!`, "warning");
-                                
+
                                 // Set up UNO challenge state
                                 gameState.unoChallengeState = {
                                     active: true,
                                     targetPlayer: gameState.currentPlayer,
                                     challenger: null
                                 };
-                                
+
                                 // Show challenge buttons for other players
                                 if (gameState.players.some(p => p.id !== gameState.currentPlayer && p.isHuman)) {
                                     showUnoChallengeOptions();
@@ -2641,9 +2664,9 @@
                         }, 5000); // Give 5 seconds to call UNO
                     } else {
                         // AI player - automatically call UNO most of the time, but sometimes forget
-                        const forgetProbability = gameState.settings.aiDifficulty === 'easy' ? 0.4 : 
-                                                gameState.settings.aiDifficulty === 'medium' ? 0.2 : 0.1;
-                        
+                        const forgetProbability = gameState.settings.aiDifficulty === 'easy' ? 0.4 :
+                            gameState.settings.aiDifficulty === 'medium' ? 0.2 : 0.1;
+
                         if (Math.random() > forgetProbability) {
                             gameState.unoCalled = true;
                             addChatMessage(player.name, "UNO!");
@@ -2651,21 +2674,21 @@
                             // AI forgot to call UNO - other players can challenge
                             addChatMessage("System", `${player.name} has one card but didn't call UNO!`);
                             showNotification(`${player.name} has one card but didn't call UNO!`, "warning");
-                            
+
                             // Set up UNO challenge state
                             gameState.unoChallengeState = {
                                 active: true,
                                 targetPlayer: gameState.currentPlayer,
                                 challenger: null
                             };
-                            
+
                             // Set timeout for other players to challenge
                             gameState.unoCheckTimeout = setTimeout(() => {
                                 if (!gameState.unoCalled && gameState.unoChallengeState.active) {
                                     // No one challenged - penalty for forgetting UNO
                                     addChatMessage("System", `${player.name} forgot to call UNO! Draw 2 penalty cards.`);
                                     showNotification(`${player.name} forgot to call UNO! Draw 2 cards.`, "warning");
-                                    
+
                                     for (let i = 0; i < 2; i++) {
                                         if (gameState.deck.length === 0) {
                                             const topCard = gameState.discardPile.pop();
@@ -2675,7 +2698,7 @@
                                         }
                                         player.cards.push(gameState.deck.pop());
                                     }
-                                    
+
                                     gameState.unoCalled = true;
                                     gameState.unoChallengeState.active = false;
                                     updateGameDisplay();
@@ -2703,7 +2726,6 @@
                     // If waiting for color (for wild cards), color selection will handle nextTurn
                 }
             }
-
             // Handle card effects
             function handleCardEffect(card) {
                 const currentCard = gameState.discardPile[gameState.discardPile.length - 1];
@@ -2801,10 +2823,10 @@
                 if (gameState.drawAccumulator > 0) {
                     let targetPlayerIndex = getNextPlayerIndex();
                     const targetPlayer = gameState.players[targetPlayerIndex];
-                    
+
                     // Check if target player can counter with a draw card
                     const canCounter = canCounterDraw(targetPlayer);
-                    
+
                     if (canCounter) {
                         // Player can counter the draw
                         gameState.counterState = {
@@ -2812,12 +2834,12 @@
                             targetPlayer: targetPlayerIndex,
                             drawAmount: gameState.drawAccumulator
                         };
-                        
+
                         gameState.currentPlayer = targetPlayerIndex;
                         gameState.players[gameState.currentPlayer].isActive = true;
                         gameState.gameMessage = `${targetPlayer.name} can counter the draw!`;
                         showNotification(`${targetPlayer.name} can counter the draw!`, "info");
-                        
+
                         // Show counter buttons for human player
                         if (gameState.players[gameState.currentPlayer].isHuman) {
                             showCounterOptions();
@@ -2828,7 +2850,7 @@
                                 if (counterCardIndex !== -1) {
                                     // Play the counter card
                                     playCard(counterCardIndex, true);
-                                    
+
                                     // Update the draw accumulator based on the counter card
                                     const counterCard = targetPlayer.cards[counterCardIndex];
                                     if (counterCard.type === 'draw2') {
@@ -2836,7 +2858,7 @@
                                     } else if (counterCard.type === 'wild4') {
                                         gameState.drawAccumulator += 4;
                                     }
-                                    
+
                                     showNotification(`${targetPlayer.name} countered! Draw pile increased to ${gameState.drawAccumulator} cards!`, "warning");
                                 } else {
                                     // Draw the cards for the target
@@ -2852,7 +2874,7 @@
                         // Draw cards for the target
                         drawCardsForPlayer(targetPlayerIndex, gameState.drawAccumulator);
                         gameState.drawAccumulator = 0;
-                        
+
                         // Skip the next player's turn if it was a draw card
                         if (gameState.blockNextPlayer) {
                             gameState.currentPlayer = getNextPlayerIndex();
@@ -2867,10 +2889,10 @@
                 const player = gameState.players[gameState.currentPlayer];
                 const hasDraw2 = player.cards.some(card => card.type === 'draw2');
                 const hasWild4 = player.cards.some(card => card.type === 'wild4');
-                
+
                 counterDraw2Btn.disabled = !hasDraw2 || gameState.counterState.drawAmount !== 2;
                 counterWild4Btn.disabled = !hasWild4;
-                
+
                 counterSection.style.display = 'flex';
                 enablePlayerControls();
             }
@@ -2884,17 +2906,17 @@
             function counterDrawCard(cardType) {
                 const player = gameState.players[gameState.currentPlayer];
                 let cardIndex = -1;
-                
+
                 if (cardType === 'draw2') {
                     cardIndex = player.cards.findIndex(card => card.type === 'draw2');
                 } else if (cardType === 'wild4') {
                     cardIndex = player.cards.findIndex(card => card.type === 'wild4');
                 }
-                
+
                 if (cardIndex !== -1) {
                     // Play the counter card
                     playCard(cardIndex);
-                    
+
                     // Update the draw accumulator based on the counter card
                     const counterCard = player.cards[cardIndex];
                     if (counterCard.type === 'draw2') {
@@ -2902,7 +2924,7 @@
                     } else if (counterCard.type === 'wild4') {
                         gameState.drawAccumulator += 4;
                     }
-                    
+
                     showNotification(`${player.name} countered! Draw pile increased to ${gameState.drawAccumulator} cards!`, "warning");
                     gameState.counterState.active = false;
                     hideCounterOptions();
@@ -2924,9 +2946,9 @@
                 // Player can counter if they have a draw2 card (for +2) or wild4 card (for +2 or +4)
                 const hasDraw2 = player.cards.some(card => card.type === 'draw2');
                 const hasWild4 = player.cards.some(card => card.type === 'wild4');
-                
-                return (gameState.drawAccumulator === 2 && hasDraw2) || 
-                       (gameState.drawAccumulator >= 2 && hasWild4);
+
+                return (gameState.drawAccumulator === 2 && hasDraw2) ||
+                    (gameState.drawAccumulator >= 2 && hasWild4);
             }
 
             // Find a counter card in player's hand
@@ -2936,7 +2958,7 @@
                     const draw2Index = player.cards.findIndex(card => card.type === 'draw2');
                     if (draw2Index !== -1) return draw2Index;
                 }
-                
+
                 const wild4Index = player.cards.findIndex(card => card.type === 'wild4');
                 return wild4Index;
             }
@@ -2944,7 +2966,7 @@
             // Draw cards for a specific player
             function drawCardsForPlayer(playerIndex, count) {
                 const player = gameState.players[playerIndex];
-                
+
                 for (let i = 0; i < count; i++) {
                     if (gameState.deck.length === 0) {
                         const topCard = gameState.discardPile.pop();
@@ -2991,6 +3013,7 @@
                 messageArea.appendChild(colorSelection);
 
                 // Add event listeners to color options
+                // Add event listeners to color options
                 colorSelection.querySelectorAll('.color-option').forEach(option => {
                     option.addEventListener('click', function () {
                         const chosenColor = this.getAttribute('data-color');
@@ -3009,6 +3032,21 @@
 
                         if (isSwap) {
                             // For swap cards, trigger the body swap after color selection
+                            // FIX: Add adult message to chat for AI players too
+                            const currentPlayer = gameState.players[gameState.currentPlayer];
+                            const possibleTargets = gameState.players.filter(p => p.id !== gameState.currentPlayer);
+                            const randomIndex = Math.floor(Math.random() * possibleTargets.length);
+                            const targetPlayer = possibleTargets[randomIndex];
+                            const genderCombo = getGenderCombination(currentPlayer, targetPlayer);
+
+                            const swapMessages = gameState.settings.adultMessages ?
+                                adultSwapMessages[genderCombo] : normalSwapMessages;
+                            const swapMessage = swapMessages[Math.floor(Math.random() * swapMessages.length)];
+
+                            if (gameState.settings.adultMessages) {
+                                addChatMessage("System", swapMessage);
+                            }
+
                             setTimeout(() => {
                                 triggerBodySwap();
                             }, 800);
@@ -3020,7 +3058,6 @@
                         }
                     });
                 });
-
                 // Auto-select fallback after 15 seconds
                 setTimeout(() => {
                     if (gameState.waitingForColor && messageArea.contains(colorSelection)) {
@@ -3053,19 +3090,21 @@
             function nextTurn() {
                 // Check if current player has 1 card but didn't call UNO
                 const currentPlayer = gameState.players[gameState.currentPlayer];
+
+                // FIX: Only set up challenge if UNO wasn't called AND player has 1 card
                 if (currentPlayer.cards.length === 1 && !gameState.unoCalled && gameState.unoCheckTimeout) {
                     clearTimeout(gameState.unoCheckTimeout); // Clear the timeout
-                    
+
                     // Set up UNO challenge state
                     gameState.unoChallengeState = {
                         active: true,
                         targetPlayer: gameState.currentPlayer,
                         challenger: null
                     };
-                    
+
                     addChatMessage("System", `${currentPlayer.name} forgot to call UNO! Other players can challenge!`);
                     showNotification(`${currentPlayer.name} forgot to call UNO! Other players can challenge!`, "warning");
-                    
+
                     // Show challenge buttons for other players
                     if (gameState.players.some(p => p.id !== gameState.currentPlayer && p.isHuman)) {
                         showUnoChallengeOptions();
@@ -3077,19 +3116,19 @@
                     }
                     return; // Don't proceed to next turn until challenge is resolved
                 }
-                
+
                 // Clear UNO timeout if it exists
                 if (gameState.unoCheckTimeout) {
                     clearTimeout(gameState.unoCheckTimeout);
                     gameState.unoCheckTimeout = null;
                 }
-                
+
                 gameState.stats.turns++;
 
                 // Reset turn-specific states
                 gameState.hasDrawnCard = false;
                 gameState.drawsThisTurn = 0;
-                gameState.unoCalled = false;
+                // FIX: Don't reset unoCalled here - it should persist until the player plays a card
 
                 // Show notifications for special conditions
                 if (gameState.blockNextPlayer) {
@@ -3109,7 +3148,6 @@
                     completeTurnChange();
                 }
             }
-
             // Get the next player index based on direction
             function getNextPlayerIndex() {
                 return getNextPlayerIndexFrom(gameState.currentPlayer);
@@ -3174,6 +3212,7 @@
             }
 
             // Trigger body swap with enhanced animations
+            // Trigger body swap with enhanced animations
             function triggerBodySwap() {
                 gameState.stats.bodySwaps++;
 
@@ -3187,48 +3226,55 @@
 
                 // Determine gender combination for animation and message
                 const genderCombo = getGenderCombination(currentPlayer, targetPlayer);
-                
+
                 // Get appropriate swap message
-                const swapMessages = gameState.settings.adultMessages ? 
+                const swapMessages = gameState.settings.adultMessages ?
                     adultSwapMessages[genderCombo] : normalSwapMessages;
                 const swapMessage = swapMessages[Math.floor(Math.random() * swapMessages.length)];
+
+                // FIX: Add the swap message to chat
+                if (gameState.settings.adultMessages) {
+                    addChatMessage("System", swapMessage);
+                } else {
+                    addChatMessage("System", `Body swap! ${currentPlayer.originalName} and ${targetPlayer.originalName} swapped bodies!`);
+                }
 
                 // Create body swap animation with enhanced effects
                 const swapAnimation = document.createElement('div');
                 swapAnimation.className = 'body-swap-animation';
-                
+
                 // Add gender-specific fog
                 let fogClass = 'grey-fog';
                 if (genderCombo === 'mtf' || genderCombo === 'ftm') {
                     fogClass = genderCombo === 'mtf' ? 'pink-fog' : 'blue-fog';
                 }
-                
+
                 swapAnimation.innerHTML = `
-                    <div class="swap-content">
-                        <div class="swap-title">BODY SWAP!</div>
-                        <div class="swap-players">
-                            <div class="swap-player">
-                                <div class="swap-avatar swap-avatar-animated" style="background-color: ${currentPlayer.color}">${currentPlayer.avatar}</div>
-                                <div>${currentPlayer.name}</div>
-                                <div style="font-size: 0.8rem; margin-top: 5px;">(${currentPlayer.gender})</div>
-                            </div>
-                            <div style="font-size: 2rem;">⇄</div>
-                            <div class="swap-player">
-                                <div class="swap-avatar swap-avatar-animated" style="background-color: ${targetPlayer.color}">${targetPlayer.avatar}</div>
-                                <div>${targetPlayer.name}</div>
-                                <div style="font-size: 0.8rem; margin-top: 5px;">(${targetPlayer.gender})</div>
-                            </div>
-                        </div>
-                        <div class="swap-animation-container">
-                            <div class="swap-animation">
-                                <div class="${fogClass}"></div>
-                                <div class="energy-beam"></div>
-                                <div class="swap-flash"></div>
-                            </div>
-                        </div>
-                        <div class="swap-message">${swapMessage}</div>
-                    </div>
-                `;
+        <div class="swap-content">
+            <div class="swap-title">BODY SWAP!</div>
+            <div class="swap-players">
+                <div class="swap-player">
+                    <div class="swap-avatar swap-avatar-animated" style="background-color: ${currentPlayer.color}">${currentPlayer.avatar}</div>
+                    <div>${currentPlayer.name}</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px;">(${currentPlayer.gender})</div>
+                </div>
+                <div style="font-size: 2rem;">⇄</div>
+                <div class="swap-player">
+                    <div class="swap-avatar swap-avatar-animated" style="background-color: ${targetPlayer.color}">${targetPlayer.avatar}</div>
+                    <div>${targetPlayer.name}</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px;">(${targetPlayer.gender})</div>
+                </div>
+            </div>
+            <div class="swap-animation-container">
+                <div class="swap-animation">
+                    <div class="${fogClass}"></div>
+                    <div class="energy-beam"></div>
+                    <div class="swap-flash"></div>
+                </div>
+            </div>
+            <div class="swap-message">${swapMessage}</div>
+        </div>
+    `;
                 document.body.appendChild(swapAnimation);
 
                 // Swap player human status
@@ -3253,7 +3299,6 @@
                 // Remove animation after 3 seconds
                 setTimeout(() => {
                     document.body.removeChild(swapAnimation);
-                    addChatMessage("System", `Body swap! ${currentPlayer.originalName} and ${targetPlayer.originalName} swapped bodies!`);
                     updateGameDisplay();
                     nextTurn();
                 }, 3000);
@@ -3277,15 +3322,15 @@
                 gameState.players.forEach(player => {
                     const identity = document.createElement('div');
                     identity.className = 'player-identity';
-                    
+
                     const isOriginalBody = player.currentBodyId === player.originalId;
                     const originalPlayer = gameState.players.find(p => p.id === player.originalId);
                     const currentBodyPlayer = gameState.players.find(p => p.id === player.currentBodyId);
-                    
-                    const identityText = isOriginalBody ? 
-                        `(Original Body - ${player.originalGender})` : 
+
+                    const identityText = isOriginalBody ?
+                        `(Original Body - ${player.originalGender})` :
                         `(Currently in ${currentBodyPlayer?.originalName || 'Unknown'}'s body - originally ${originalPlayer?.originalName || 'Unknown'} - ${originalPlayer?.originalGender || 'Unknown'})`;
-                    
+
                     identity.innerHTML = `
                         <div class="player-identity-avatar" style="background-color: ${player.color}">${player.avatar}</div>
                         <div class="identity-info">
@@ -3332,61 +3377,61 @@
 
                 // Reset players
                 gameState.players = [
-                    { 
-                        id: 0, 
-                        name: 'Anirudh', 
-                        cards: [], 
-                        isActive: true, 
-                        avatar: 'P1', 
-                        color: '#e74c3c', 
-                        gender: 'male', 
-                        personality: 'strategist', 
-                        originalName: 'Anirudh', 
+                    {
+                        id: 0,
+                        name: 'Anirudh',
+                        cards: [],
+                        isActive: true,
+                        avatar: 'P1',
+                        color: '#e74c3c',
+                        gender: 'male',
+                        personality: 'strategist',
+                        originalName: 'Anirudh',
                         originalId: 0,
                         originalGender: 'male',
                         isHuman: false,
                         currentBodyId: 0
                     },
-                    { 
-                        id: 1, 
-                        name: 'Soniya', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P2', 
-                        color: '#3498db', 
-                        gender: 'female', 
-                        personality: 'trickster', 
-                        originalName: 'Soniya', 
+                    {
+                        id: 1,
+                        name: 'Soniya',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P2',
+                        color: '#3498db',
+                        gender: 'female',
+                        personality: 'trickster',
+                        originalName: 'Soniya',
                         originalId: 1,
                         originalGender: 'female',
                         isHuman: false,
                         currentBodyId: 1
                     },
-                    { 
-                        id: 2, 
-                        name: 'John', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P3', 
-                        color: '#2ecc71', 
-                        gender: 'male', 
-                        personality: 'wildcard', 
-                        originalName: 'John', 
+                    {
+                        id: 2,
+                        name: 'John',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P3',
+                        color: '#2ecc71',
+                        gender: 'male',
+                        personality: 'wildcard',
+                        originalName: 'John',
                         originalId: 2,
                         originalGender: 'male',
                         isHuman: false,
                         currentBodyId: 2
                     },
-                    { 
-                        id: 3, 
-                        name: 'Aparna', 
-                        cards: [], 
-                        isActive: false, 
-                        avatar: 'P4', 
-                        color: '#f1c40f', 
-                        gender: 'female', 
-                        personality: 'collector', 
-                        originalName: 'Aparna', 
+                    {
+                        id: 3,
+                        name: 'Aparna',
+                        cards: [],
+                        isActive: false,
+                        avatar: 'P4',
+                        color: '#f1c40f',
+                        gender: 'female',
+                        personality: 'collector',
+                        originalName: 'Aparna',
                         originalId: 3,
                         originalGender: 'female',
                         isHuman: false,
@@ -3408,6 +3453,7 @@
                 hideUnoChallengeOptions();
             }
 
+            // Simulate AI turn
             // Simulate AI turn
             function simulateAITurn() {
                 const aiPlayer = gameState.players[gameState.currentPlayer];
@@ -3481,28 +3527,34 @@
                 }
             }
 
-            // Show UNO challenge options
-            function showUnoChallengeOptions() {
-                unoChallengeSection.style.display = 'flex';
-                enablePlayerControls();
-            }
-
-            // Hide UNO challenge options
-            function hideUnoChallengeOptions() {
-                unoChallengeSection.style.display = 'none';
-            }
-
             // Handle UNO challenge
             function challengeUno() {
                 const targetPlayer = gameState.players[gameState.unoChallengeState.targetPlayer];
                 const challenger = gameState.players[gameState.currentPlayer];
-                
+
+                // FIX: Check if UNO was already called - if yes, challenge fails
+                if (gameState.unoCalled) {
+                    // UNO was already called - invalid challenge
+                    addChatMessage(challenger.name, `falsely challenged ${targetPlayer.name} who already called UNO!`);
+                    showNotification(`${challenger.name} falsely challenged ${targetPlayer.name}! ${challenger.name} draws 2 penalty cards.`, "warning");
+
+                    // Penalty for false UNO call - challenger draws 2 cards
+                    for (let i = 0; i < 2; i++) {
+                        if (gameState.deck.length === 0) {
+                            const topCard = gameState.discardPile.pop();
+                            gameState.deck = [...gameState.discardPile];
+                            gameState.discardPile = [topCard];
+                            shuffleDeck();
+                        }
+                        challenger.cards.push(gameState.deck.pop());
+                    }
+                }
                 // Check if target has exactly 1 card AND didn't call UNO
-                if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
+                else if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
                     // Valid challenge - target draws 2 penalty cards
                     addChatMessage(challenger.name, `successfully challenged ${targetPlayer.name} for not calling UNO!`);
                     showNotification(`${challenger.name} successfully challenged ${targetPlayer.name}! ${targetPlayer.name} draws 2 penalty cards.`, "success");
-                    
+
                     // Draw 2 penalty cards
                     for (let i = 0; i < 2; i++) {
                         if (gameState.deck.length === 0) {
@@ -3516,11 +3568,11 @@
 
                     gameState.unoCalled = true; // Mark as called to prevent multiple challenges
                 } else {
-                    // Invalid challenge - challenger draws 2 penalty cards
+                    // Invalid challenge - target doesn't have exactly 1 card
                     addChatMessage(challenger.name, `falsely challenged ${targetPlayer.name}!`);
                     showNotification(`${challenger.name} falsely challenged ${targetPlayer.name}! ${challenger.name} draws 2 penalty cards.`, "warning");
-                    
-                    // Draw 2 penalty cards for challenger
+
+                    // Penalty for false UNO call - challenger draws 2 cards
                     for (let i = 0; i < 2; i++) {
                         if (gameState.deck.length === 0) {
                             const topCard = gameState.discardPile.pop();
@@ -3531,11 +3583,11 @@
                         challenger.cards.push(gameState.deck.pop());
                     }
                 }
-                
+
                 // Reset challenge state
                 gameState.unoChallengeState.active = false;
                 hideUnoChallengeOptions();
-                
+
                 // Continue with the game
                 completeTurnChange();
             }
@@ -3544,11 +3596,11 @@
             function declineUnoChallenge() {
                 const targetPlayer = gameState.players[gameState.unoChallengeState.targetPlayer];
                 addChatMessage("System", `No one challenged ${targetPlayer.name} for not calling UNO!`);
-                
+
                 // Reset challenge state
                 gameState.unoChallengeState.active = false;
                 hideUnoChallengeOptions();
-                
+
                 // Continue with the game
                 completeTurnChange();
             }
@@ -3556,18 +3608,25 @@
             // Handle AI UNO challenge
             function handleAIUnoChallenge() {
                 const targetPlayer = gameState.players[gameState.unoChallengeState.targetPlayer];
-                const possibleChallengers = gameState.players.filter(p => 
-                    p.id !== gameState.unoChallengeState.targetPlayer && 
+
+                // FIX: Don't challenge if UNO was already called
+                if (gameState.unoCalled) {
+                    declineUnoChallenge();
+                    return;
+                }
+
+                const possibleChallengers = gameState.players.filter(p =>
+                    p.id !== gameState.unoChallengeState.targetPlayer &&
                     !p.isHuman
                 );
-                
+
                 if (possibleChallengers.length > 0) {
                     // AI decides whether to challenge based on difficulty
                     const difficulty = gameState.settings.aiDifficulty;
                     let challengeProbability = 0.3; // Easy
                     if (difficulty === 'medium') challengeProbability = 0.6;
                     if (difficulty === 'hard') challengeProbability = 0.9;
-                    
+
                     if (Math.random() < challengeProbability) {
                         const challenger = possibleChallengers[Math.floor(Math.random() * possibleChallengers.length)];
                         addUnoChallenge(challenger.name, targetPlayer.name);
@@ -3587,11 +3646,27 @@
                 const challenger = gameState.players.find(p => p.name.replace(' (You)', '') === playerName.replace(' (You)', ''));
 
                 if (targetPlayer && challenger) {
+                    // FIX: Check if UNO was already called first
+                    if (gameState.unoCalled) {
+                        // False call - UNO was already called
+                        addChatMessage("System", `False UNO call! ${targetPlayerName} already called UNO. ${playerName} draws 2 cards!`);
+
+                        // Penalty for false UNO call - challenger draws 2 cards
+                        for (let i = 0; i < 2; i++) {
+                            if (gameState.deck.length === 0) {
+                                const topCard = gameState.discardPile.pop();
+                                gameState.deck = [...gameState.discardPile];
+                                gameState.discardPile = [topCard];
+                                shuffleDeck();
+                            }
+                            challenger.cards.push(gameState.deck.pop());
+                        }
+                    }
                     // Check if target has exactly 1 card AND didn't call UNO
-                    if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
+                    else if (targetPlayer.cards.length === 1 && !gameState.unoCalled) {
                         // Valid challenge - target draws 2 penalty cards
                         addChatMessage("System", `${playerName} successfully challenged ${targetPlayerName}! ${targetPlayerName} draws 2 penalty cards.`);
-                        
+
                         // Draw 2 penalty cards
                         for (let i = 0; i < 2; i++) {
                             if (gameState.deck.length === 0) {
@@ -3614,21 +3689,7 @@
                     } else if (targetPlayer.cards.length !== 1) {
                         // False call - target doesn't have exactly 1 card
                         addChatMessage("System", `False UNO call! ${targetPlayerName} has ${targetPlayer.cards.length} cards. ${playerName} draws 2 cards!`);
-                        
-                        // Penalty for false UNO call - challenger draws 2 cards
-                        for (let i = 0; i < 2; i++) {
-                            if (gameState.deck.length === 0) {
-                                const topCard = gameState.discardPile.pop();
-                                gameState.deck = [...gameState.discardPile];
-                                gameState.discardPile = [topCard];
-                                shuffleDeck();
-                            }
-                            challenger.cards.push(gameState.deck.pop());
-                        }
-                    } else if (gameState.unoCalled) {
-                        // False call - UNO was already called
-                        addChatMessage("System", `False UNO call! ${targetPlayerName} already called UNO. ${playerName} draws 2 cards!`);
-                        
+
                         // Penalty for false UNO call - challenger draws 2 cards
                         for (let i = 0; i < 2; i++) {
                             if (gameState.deck.length === 0) {
@@ -3641,7 +3702,7 @@
                         }
                     }
                 }
-                
+
                 // Reset challenge state
                 gameState.unoChallengeState.active = false;
             }
@@ -3680,7 +3741,10 @@
 
             // Initialize the game
             initGame();
+
         });
+
     </script>
 </body>
+
 </html>
